@@ -1,20 +1,30 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import HomeScreen from './screens/HomeScreen';
+import BarberSelectionScreen from './screens/BarberSelectionScreen';
+import BookingScreen from './screens/BookingScreen';
+import ConfirmationScreen from './screens/ConfirmationScreen';
+import AgendaScreen from './screens/AgendaScreen'; // Nova importação
+import CancellationScreen from './screens/CancellationScreen';
+import LoginScreen from './screens/LoginScreen';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+const Stack = createNativeStackNavigator();
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const App = () => {
+    return (
+        <NavigationContainer>
+            <Stack.Navigator initialRouteName="Home">
+                <Stack.Screen name="index" component={HomeScreen} />
+                <Stack.Screen name="BarberSelection" component={BarberSelectionScreen} />
+                <Stack.Screen name="Booking" component={BookingScreen} />
+                <Stack.Screen name="Confirmation" component={ConfirmationScreen} />
+                <Stack.Screen name="Agenda" component={AgendaScreen} /> 
+                <Stack.Screen name="Cancellation" component={CancellationScreen} /> 
+                <Stack.Screen name="Login" component={LoginScreen} /> 
+            </Stack.Navigator>
+        </NavigationContainer>
+    );
+};
+
+export default App;
